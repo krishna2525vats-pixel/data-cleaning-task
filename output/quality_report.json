@@ -1,0 +1,219 @@
+{
+  "run": {
+    "input": "data/raw/messy_books.csv",
+    "timestamp": "2026-10-30T14:40:25",
+    "rows_in": 1100,
+    "rows_out": 941,
+    "rows_rejected": 59,
+    "duplicates_removed": 100,
+    "reject_rate": 0.0536
+  },
+  "steps": [
+    {
+      "step": "ingest",
+      "message": "Loaded 1100 rows x 13 columns from messy_books.csv",
+      "count": 1100
+    },
+    {
+      "step": "text",
+      "message": "Trimmed/collapsed whitespace in 599 cells; null tokens -> NA",
+      "count": 599
+    },
+    {
+      "step": "currency",
+      "message": "Parsed prices; converted 304 non-GBP prices to GBP (static rates)",
+      "count": 304
+    },
+    {
+      "step": "currency",
+      "message": "0 unparseable prices set to null",
+      "count": 0
+    },
+    {
+      "step": "currency",
+      "message": "22 prices were already missing",
+      "count": 22
+    },
+    {
+      "step": "dates",
+      "message": "Parsed dates with 5 explicit formats; 17 unparseable -> null; 0 out-of-range -> null",
+      "count": 17
+    },
+    {
+      "step": "rating",
+      "message": "Normalised ratings to 1-5; 11 invalid -> null",
+      "count": 11
+    },
+    {
+      "step": "availability",
+      "message": "Availability -> in_stock (bool) + stock_quantity; 0 unrecognised -> null",
+      "count": 0
+    },
+    {
+      "step": "numbers",
+      "message": "num_reviews -> numeric; 0 invalid -> null",
+      "count": 0
+    },
+    {
+      "step": "categories",
+      "message": "category: unified 152 case/spelling variants",
+      "count": 152
+    },
+    {
+      "step": "categories",
+      "message": "product_type: unified 0 case/spelling variants",
+      "count": 0
+    },
+    {
+      "step": "text",
+      "message": "Repaired 966 descriptions (removed '...more' / duplicated lead-in)",
+      "count": 966
+    },
+    {
+      "step": "dedupe",
+      "message": "Recovered 10 missing UPCs via product URL",
+      "count": 10
+    },
+    {
+      "step": "dedupe",
+      "message": "Removed 100 duplicate records (same UPC/URL); kept the most complete and most recent version of each",
+      "count": 100
+    },
+    {
+      "step": "nulls",
+      "message": "Filled 23 nulls in 'category' with default 'Unknown'",
+      "count": 23
+    },
+    {
+      "step": "nulls",
+      "message": "Filled 57 nulls in 'num_reviews' with default 0",
+      "count": 57
+    },
+    {
+      "step": "nulls",
+      "message": "Filled 36 nulls in 'description' with default 'No description available'",
+      "count": 36
+    },
+    {
+      "step": "nulls",
+      "message": "Left as null (cannot be imputed honestly): rating=39, in_stock=4, stock_quantity=808, image_url=9, scraped_date=35"
+    },
+    {
+      "step": "validation",
+      "message": "Quarantined 59 invalid rows: {'invalid_upc': 29, 'missing_title': 6, 'missing_price': 21, 'price_out_of_range': 5}",
+      "count": 59
+    },
+    {
+      "step": "schema",
+      "message": "Schema validation passed for 941 rows x 16 columns",
+      "count": 941
+    }
+  ],
+  "rejections_by_reason": {
+    "invalid_upc": 29,
+    "missing_title": 6,
+    "missing_price": 21,
+    "price_out_of_range": 5
+  },
+  "nulls_before_after": {
+    "upc": {
+      "before": 42,
+      "after": 0
+    },
+    "title": {
+      "before": 7,
+      "after": 0
+    },
+    "category": {
+      "before": 25,
+      "after": 0
+    },
+    "price_gbp": {
+      "before": 0,
+      "after": 0
+    },
+    "original_price": {
+      "before": 0,
+      "after": 0
+    },
+    "original_currency": {
+      "before": 0,
+      "after": 0
+    },
+    "rating": {
+      "before": 30,
+      "after": 39
+    },
+    "in_stock": {
+      "before": 0,
+      "after": 4
+    },
+    "stock_quantity": {
+      "before": 0,
+      "after": 760
+    },
+    "num_reviews": {
+      "before": 63,
+      "after": 0
+    },
+    "description": {
+      "before": 78,
+      "after": 0
+    },
+    "product_type": {
+      "before": 0,
+      "after": 0
+    },
+    "product_url": {
+      "before": 0,
+      "after": 0
+    },
+    "image_url": {
+      "before": 10,
+      "after": 9
+    },
+    "source_page": {
+      "before": 0,
+      "after": 0
+    },
+    "scraped_date": {
+      "before": 22,
+      "after": 32
+    }
+  },
+  "dtypes": {
+    "upc": "string",
+    "title": "string",
+    "category": "string",
+    "price_gbp": "float64",
+    "original_price": "float64",
+    "original_currency": "string",
+    "rating": "Int8",
+    "in_stock": "boolean",
+    "stock_quantity": "Int64",
+    "num_reviews": "Int64",
+    "description": "string",
+    "product_type": "string",
+    "product_url": "string",
+    "image_url": "string",
+    "source_page": "string",
+    "scraped_date": "datetime64[ns]"
+  },
+  "profile": {
+    "price_gbp": {
+      "count": 941.0,
+      "mean": 35.05,
+      "std": 14.42,
+      "min": 10.0,
+      "25%": 22.1,
+      "50%": 36.25,
+      "75%": 47.13,
+      "max": 59.99
+    },
+    "categories": 51,
+    "date_range": [
+      "2026-10-01",
+      "2026-10-30"
+    ]
+  }
+}

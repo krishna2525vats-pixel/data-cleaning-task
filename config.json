@@ -1,0 +1,45 @@
+{
+  "default_currency": "GBP",
+  "currency_rates_to_gbp": {
+    "GBP": 1.0,
+    "USD": 0.79,
+    "EUR": 0.86,
+    "INR": 0.0094
+  },
+  "date_formats": [
+    "%Y-%m-%d",
+    "%d/%m/%Y",
+    "%b %d, %Y",
+    "%d-%b-%y",
+    "%Y%m%d"
+  ],
+  "null_tokens": [
+    "",
+    "n/a",
+    "na",
+    "null",
+    "none",
+    "nan",
+    "-",
+    "--",
+    "?"
+  ],
+  "price_bounds_gbp": [
+    0.01,
+    1000.0
+  ],
+  "upc_regex": "^[0-9a-f]{16}$",
+  "min_date": "2020-01-01",
+  "fill_defaults": {
+    "category": "Unknown",
+    "num_reviews": 0,
+    "description": "No description available"
+  },
+  "column_aliases": {
+    "price_gbp": "price",
+    "scraped_at": "scraped_date",
+    "date_scraped": "scraped_date",
+    "url": "product_url"
+  },
+  "max_reject_rate": 0.1
+}

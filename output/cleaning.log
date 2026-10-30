@@ -1,0 +1,21 @@
+2026-10-30 14:40:25,044 INFO    [ingest] Loaded 1100 rows x 13 columns from messy_books.csv
+2026-10-30 14:40:25,083 INFO    [text] Trimmed/collapsed whitespace in 599 cells; null tokens -> NA
+2026-10-30 14:40:25,086 INFO    [currency] Parsed prices; converted 304 non-GBP prices to GBP (static rates)
+2026-10-30 14:40:25,086 INFO    [currency] 0 unparseable prices set to null
+2026-10-30 14:40:25,086 INFO    [currency] 22 prices were already missing
+2026-10-30 14:40:25,089 INFO    [dates] Parsed dates with 5 explicit formats; 17 unparseable -> null; 0 out-of-range -> null
+2026-10-30 14:40:25,089 INFO    [rating] Normalised ratings to 1-5; 11 invalid -> null
+2026-10-30 14:40:25,090 INFO    [availability] Availability -> in_stock (bool) + stock_quantity; 0 unrecognised -> null
+2026-10-30 14:40:25,090 INFO    [numbers] num_reviews -> numeric; 0 invalid -> null
+2026-10-30 14:40:25,095 INFO    [categories] category: unified 152 case/spelling variants
+2026-10-30 14:40:25,096 INFO    [categories] product_type: unified 0 case/spelling variants
+2026-10-30 14:40:25,109 INFO    [text] Repaired 966 descriptions (removed '...more' / duplicated lead-in)
+2026-10-30 14:40:25,110 INFO    [dedupe] Recovered 10 missing UPCs via product URL
+2026-10-30 14:40:25,112 INFO    [dedupe] Removed 100 duplicate records (same UPC/URL); kept the most complete and most recent version of each
+2026-10-30 14:40:25,112 INFO    [nulls] Filled 23 nulls in 'category' with default 'Unknown'
+2026-10-30 14:40:25,112 INFO    [nulls] Filled 57 nulls in 'num_reviews' with default 0
+2026-10-30 14:40:25,112 INFO    [nulls] Filled 36 nulls in 'description' with default 'No description available'
+2026-10-30 14:40:25,112 INFO    [nulls] Left as null (cannot be imputed honestly): rating=39, in_stock=4, stock_quantity=808, image_url=9, scraped_date=35
+2026-10-30 14:40:25,114 INFO    [validation] Quarantined 59 invalid rows: {'invalid_upc': 29, 'missing_title': 6, 'missing_price': 21, 'price_out_of_range': 5}
+2026-10-30 14:40:25,116 INFO    [schema] Schema validation passed for 941 rows x 16 columns
+2026-10-30 14:40:25,133 INFO    Done: 941 clean rows -> output
